@@ -34,7 +34,7 @@ struct tagged_argument : tagged_argument_base
     typedef Arg value_type;
     typedef Arg& reference;
 
-    tagged_argument(reference x) : value(x) {}
+    tagged_argument(reference xx) : value(xx) {}
 
     // A metafunction class that, given a keyword and a default
     // type, returns the appropriate result type for a keyword
