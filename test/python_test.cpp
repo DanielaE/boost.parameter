@@ -8,6 +8,11 @@
 #include <boost/parameter/python.hpp>
 #include <boost/utility/enable_if.hpp>
 
+#if defined(BOOST_MSVC)
+# pragma warning(disable: 4003) // not enough actual parameters for macro
+# pragma warning(disable: 4709) // comma operator within array index expression
+#endif
+
 namespace test {
 
 BOOST_PARAMETER_KEYWORD(tags, x)
@@ -66,11 +71,12 @@ struct X : Xbase
         (optional (x, *, "") (y, *, ""))
     )
     {
+        (void)x; (void)y;
         return *this;
     }
 
     template <class A0>
-    X& operator()(A0 const& a0)
+    X& operator()(A0 const&)
     {
         return *this;
     }

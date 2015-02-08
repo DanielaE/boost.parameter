@@ -1,6 +1,10 @@
 
 #include <boost/parameter.hpp>
 
+#ifdef BOOST_MSVC
+# pragma warning(disable: 4003) // not enough actual parameters for macro
+#endif
+
 namespace boost
 {
   int vertex_index = 0;
@@ -24,5 +28,7 @@ BOOST_PARAMETER_FUNCTION((void), f, tag,
     (in_out(color_map), *,
       default_color_map(num_vertices(graph), index_map) )
 )
-) {}
+) {
+    (void)color_map; (void)index_map; (void)root_vertex; (void)visitor; (void)graph;
+}
 

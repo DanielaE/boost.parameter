@@ -14,7 +14,7 @@ BOOST_PARAMETER_KEYWORD(tag, unused)
 template <class Args>
 int f(Args const& args)
 {
-    return args[kw | 1.f];
+    return static_cast<int>(args[kw | 1.f]);
 }
 
 } // namespace test
