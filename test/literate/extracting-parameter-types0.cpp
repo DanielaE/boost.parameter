@@ -8,7 +8,9 @@ template <class Name, class Index>
 int deduce_arg_types_impl(Name& name, Index& index)
 {
     Name& n2 = name;  // we know the types
+	(void)n2;
     Index& i2 = index;
+	(void)i2;
     return index;
 }
 

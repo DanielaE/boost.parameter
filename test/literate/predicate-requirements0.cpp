@@ -3,6 +3,10 @@
 #include <boost/graph/adjacency_list.hpp>
 #include <boost/graph/depth_first_search.hpp>
 
+#ifdef BOOST_MSVC
+# pragma warning(disable: 4003) // not enough actual parameters for macro
+#endif
+
 BOOST_PARAMETER_NAME((_graph, graphs) graph)
 BOOST_PARAMETER_NAME((_visitor, graphs) visitor)
 BOOST_PARAMETER_NAME((_root_vertex, graphs) root_vertex)
@@ -45,6 +49,7 @@ boost::iterator_property_map<
 default_color_map(Size num_vertices, IndexMap const& index_map)
 {
    std::vector<boost::default_color_type> colors(num_vertices);
+   (void)index_map;
    return &colors[0];
 }
 
@@ -85,7 +90,9 @@ BOOST_PARAMETER_FUNCTION(
        , default_color_map(num_vertices(graph), index_map) )
     )
 )
-{}
+{
+    (void)color_map; (void)index_map; (void)root_vertex; (void)visitor; (void)graph;
+}
 
 int main()
 {
