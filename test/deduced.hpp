@@ -43,10 +43,14 @@ struct assert_expected
     {
         boost::parameter::keyword<K> const& k = boost::parameter::keyword<K>::get();
         assert(check1(k, expected[k], 0L));
+		(void)k;
     }
 
     E const& expected;
     ArgPack const& args;
+
+private:
+    assert_expected& operator=(const assert_expected&);
 };
 
 template <class E, class ArgPack>

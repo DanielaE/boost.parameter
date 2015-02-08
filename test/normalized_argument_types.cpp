@@ -7,6 +7,11 @@
 #include <boost/type_traits/is_same.hpp>
 #include <cassert>
 
+#ifdef BOOST_MSVC
+# pragma warning (disable: 4100) // unreferenced formal parameter
+# pragma warning (disable: 4244) // narrowing conversion
+#endif
+
 struct count_instances
 {
     count_instances()

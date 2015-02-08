@@ -79,7 +79,7 @@ namespace test
   // the SFINAE.
   template<class A0, class A1>
   typename boost::enable_if<boost::is_same<int,A0>, int>::type
-  f(A0 const& a0, A1 const& a1)
+  f(A0 const&, A1 const&)
   {
       return 0;
   }

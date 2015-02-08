@@ -88,6 +88,9 @@ struct values_t
     Name const& n;
     Value const& v;
     Index const& i;
+
+private:
+    values_t& operator=(const values_t&);
 };
 
 template <class Name, class Value, class Index>
