@@ -20,6 +20,9 @@ struct default_
     {}
 
     Value& value;
+
+private:
+    default_& operator=(const default_&);
 };
 
 //
@@ -59,6 +62,9 @@ struct lazy_default
       : compute_default(x)
     {}
     DefaultComputer const& compute_default;
+
+private:
+    lazy_default& operator=(const lazy_default&);
 };
 #  define BOOST_PARAMETER_lazy_default_fallback lazy_default
 # endif 
