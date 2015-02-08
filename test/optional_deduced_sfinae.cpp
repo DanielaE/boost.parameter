@@ -10,6 +10,10 @@
 #include "basics.hpp"
 #include <boost/utility/enable_if.hpp>
 
+#ifdef BOOST_MSVC
+# pragma warning(disable: 4100) // unreferenced formal parameter
+#endif
+
 namespace test {
 
 namespace mpl = boost::mpl;
@@ -53,7 +57,7 @@ BOOST_PARAMETER_FUNCTION((int), sfinae, tag,
 
 template<class A0>
 typename boost::enable_if<boost::is_same<int,A0>, int>::type
-sfinae(A0 const& a0)
+sfinae(A0 const&)
 {
     return 0;
 }

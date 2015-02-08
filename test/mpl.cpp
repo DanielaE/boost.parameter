@@ -27,7 +27,7 @@ namespace test
 
   
   template<class Expected, class Params>
-  void f_impl(Params const& p BOOST_APPEND_EXPLICIT_TEMPLATE_TYPE(Expected))
+  void f_impl(Params const& BOOST_APPEND_EXPLICIT_TEMPLATE_TYPE(Expected))
   {
       BOOST_MPL_ASSERT_RELATION(
           mpl::size<Expected>::value
