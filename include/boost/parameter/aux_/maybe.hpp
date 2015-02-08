@@ -76,7 +76,7 @@ struct maybe : maybe_base
     template <class U>
     reference construct2(U const& value_) const
     {
-        new (m_storage.address()) non_cv_value(value_);
+        new (m_storage.address()) non_cv_value(static_cast<non_cv_value>(value_));
         constructed = true;
         return *(non_cv_value*)m_storage.address();
     }
