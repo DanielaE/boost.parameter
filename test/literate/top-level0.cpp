@@ -1,6 +1,10 @@
 
 #include <boost/parameter.hpp>
 
+#ifdef BOOST_MSVC
+# pragma warning(disable: 4003) // not enough actual parameters for macro
+#endif
+
 namespace test
 {
   BOOST_PARAMETER_NAME(title)
@@ -10,6 +14,7 @@ namespace test
   BOOST_PARAMETER_FUNCTION(
      (int), new_window, tag, (required (title,*)(width,*)(titlebar,*)))
   {
+     (void)titlebar; (void)width; (void) title;
      return 0;
   }
 

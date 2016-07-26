@@ -1,6 +1,10 @@
 
 #include <boost/parameter.hpp>
 
+#ifdef BOOST_MSVC
+# pragma warning(disable: 4003) // not enough actual parameters for macro
+#endif
+
 BOOST_PARAMETER_NAME(name)
 BOOST_PARAMETER_NAME(func)
 BOOST_PARAMETER_NAME(docstring)
@@ -58,7 +62,7 @@ BOOST_PARAMETER_FUNCTION(
      )
  )
  {
-    
+    (void)policies; (void)keywords; (void)docstring; (void)func; (void)name;
  }
 
 

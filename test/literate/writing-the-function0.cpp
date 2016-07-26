@@ -1,6 +1,10 @@
 
 #include <boost/parameter/name.hpp>
 
+#ifdef BOOST_MSVC
+# pragma warning(disable: 4003) // not enough actual parameters for macro
+#endif
+
 BOOST_PARAMETER_NAME(graph)
 BOOST_PARAMETER_NAME(visitor)
 BOOST_PARAMETER_NAME(root_vertex)
