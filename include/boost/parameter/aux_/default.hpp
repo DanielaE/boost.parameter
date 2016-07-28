@@ -15,14 +15,11 @@ namespace boost { namespace parameter { namespace aux {
 template <class Keyword, class Value>
 struct default_
 {
-    default_(Value& xx)
-      : value(xx)
+    default_(Value& x)
+      : value(x)
     {}
 
     Value& value;
-
-private:
-    default_& operator=(const default_&);
 };
 
 //
@@ -58,13 +55,10 @@ struct lazy_default
 template <class KW, class DefaultComputer>
 struct lazy_default
 {
-    lazy_default(const DefaultComputer& xx)
-      : compute_default(xx)
+    lazy_default(const DefaultComputer& x)
+      : compute_default(x)
     {}
     DefaultComputer const& compute_default;
-
-private:
-    lazy_default& operator=(const lazy_default&);
 };
 #  define BOOST_PARAMETER_lazy_default_fallback lazy_default
 # endif 
