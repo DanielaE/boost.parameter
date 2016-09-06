@@ -77,7 +77,7 @@ typedef boost::python::class_<
 > c1;
 
 typedef boost::python::class_<
-    D, held_type<std::auto_ptr<D> >, base_list<bases<B> >
+    D, held_type<std::unique_ptr<D> >, base_list<bases<B> >
 > c2;
 
 BOOST_MPL_ASSERT((boost::is_same<c1::class_type, B>));
@@ -90,6 +90,6 @@ BOOST_MPL_ASSERT((
 BOOST_MPL_ASSERT((boost::is_same<c2::class_type, D>));
 BOOST_MPL_ASSERT((boost::is_same<c2::base_list, bases<B> >));
 BOOST_MPL_ASSERT((
-    boost::is_same<c2::held_type, std::auto_ptr<D> >
+    boost::is_same<c2::held_type, std::unique_ptr<D> >
 ));
 BOOST_MPL_ASSERT((boost::is_same<c2::copyable, void>));
