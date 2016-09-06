@@ -86,7 +86,7 @@ struct D {};
 using boost::python::bases;
 typedef boost::python::class_<B, boost::noncopyable> c1;
 
-typedef boost::python::class_<D, std::auto_ptr<D>, bases<B> > c2;
+typedef boost::python::class_<D, std::unique_ptr<D>, bases<B> > c2;
 BOOST_MPL_ASSERT((boost::is_same<c1::class_type, B>));
 BOOST_MPL_ASSERT((boost::is_same<c1::base_list, bases<> >));
 BOOST_MPL_ASSERT((boost::is_same<c1::held_type, B>));
@@ -97,7 +97,7 @@ BOOST_MPL_ASSERT((
 BOOST_MPL_ASSERT((boost::is_same<c2::class_type, D>));
 BOOST_MPL_ASSERT((boost::is_same<c2::base_list, bases<B> >));
 BOOST_MPL_ASSERT((
-    boost::is_same<c2::held_type, std::auto_ptr<D> >
+    boost::is_same<c2::held_type, std::unique_ptr<D> >
 ));
 BOOST_MPL_ASSERT((boost::is_same<c2::copyable, void>));
 
